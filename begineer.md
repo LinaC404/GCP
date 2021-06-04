@@ -30,7 +30,7 @@ git add
 git commit
 ```
 * Create a subnet  called `griffin-dev-mgmt` and set the IP address range as `192.168.32.0/20`
-* ```
+```
 git status
 git add
 git commit
