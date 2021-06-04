@@ -38,6 +38,8 @@ git commit
 
 <h3 id=2>Create production VPC using Deployment Manager</h3>
 
+![Here is result shown in Step 2](./image/1Step2.PNG)
+
 <h3 id=3>Create bastion host</h3>
 <h3 id=4>Create and configure Cloud SQL Instance</h3>
 <h3 id=5>Create Kubernetes cluster</h3>
