@@ -136,6 +136,26 @@ edit wp-env.yaml
 ```
 
 * Replace username_goes_here -> `wp_user` and password_goes_here ->  `stormwind_rules`, and save the change.
+![wp-env.yaml](./image/1_step6_1.jpg)
+
+* Fetch cluster endpoint and auth data, kubeconfig entry generated for current cluster.
+```
+gcloud container clusters get-credentials griffin-dev --zone=us-east1-b
+```
+
+* Apply configuration changes to the cluster.
+```
+kubectl apply -f wp-env.yaml
+```
+
+* [Create a private key for the service account](https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/keys/create) which was already set up and add the  key to k8s environment.
+```
+gcloud iam service-accounts keys create key.json \
+    --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
+kubectl create secret generic cloudsql-instance-credentials \
+    --from-file key.json
+```
+
 
 <h3 id=7>Create a WordPress deployment</h3>
 <h3 id=8>Enable monitoring</h3>
