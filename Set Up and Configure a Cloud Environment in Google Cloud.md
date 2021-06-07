@@ -109,6 +109,8 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+![Here is result shown in Step 4](./image/1_step6.PNG)
+
 <h3 id=5>Create Kubernetes cluster</h3>
 
 ```
