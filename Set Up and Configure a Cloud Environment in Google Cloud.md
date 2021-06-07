@@ -58,7 +58,7 @@ gcloud deployment-manager deployments create griffin-prod --config prod-network.
 
 <h3 id=3>Create bastion host</h3>
 
-[what is bastion host](https://cloud.google.com/solutions/connecting-securely#bastion)
+* [what is bastion host](https://cloud.google.com/solutions/connecting-securely#bastion)
 ```
 gcloud compute instances create griffin-dev-db \
 --zone=us-east1-b \
