@@ -177,6 +177,8 @@ kubectl create -f wp-service.yaml
 
 * Create [Uptime Check](https://cloud.google.com/monitoring/uptime-checks)
 
+`Monitoring`->`Uptime checks`->`＋CREATE UPTIME CHECK`
+
 ![Uptime Check]( )
 
 <h3 id=9><a href="https://cloud.google.com/iam/docs/granting-changing-revoking-access">Provide access for an additional engineer</a></h3>
