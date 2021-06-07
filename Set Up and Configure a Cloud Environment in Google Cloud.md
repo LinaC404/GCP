@@ -156,8 +156,33 @@ kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
 ```
 
-
 <h3 id=7>Create a WordPress deployment</h3>
+
+* Edit the `wp-k8s/wp-deployment.yaml` file
+```
+cd ~/wp-k8s
+edit wp-deployment.yaml
+```
+
+* Replace YOUR_SQL_INSTANCE with **griffin-dev-db's Instance connection name**, and save the change.
+ 
+![configuration file]( )
+* Create deployment and the service with `wp-service.yaml`
+```
+kubectl create -f wp-deployment.yaml
+kubectl create -f wp-service.yaml
+```
+
 <h3 id=8>Enable monitoring</h3>
-<h3 id=9>Provide access for an additional engineer</h3>
+
+* Create [Uptime Check](https://cloud.google.com/monitoring/uptime-checks)
+
+![Uptime Check]( )
+
+<h3 id=9><a href="https://cloud.google.com/iam/docs/granting-changing-revoking-access">Provide access for an additional engineer</a></h3>
+
+```
+gcloud project add-iam-policy-binding projectID??? \
+    --member=user:my-user@example.com --role=roles/editor
+```
 
