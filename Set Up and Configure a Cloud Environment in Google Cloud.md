@@ -1,6 +1,6 @@
 <h1 align='center'> Set Up and Configure a Cloud Environment in Google Cloud: Challenge Lab </h1>
 
-<strong>Note: Make sure the region is `us-east1` and the zone is `us-east-1`</strong>
+<strong>Note: Make sure the region is `us-east1` and the zone is `us-east1-b`</strong>
 
 <h2> Steps </h2>
 
@@ -61,9 +61,10 @@ gcloud deployment-manager deployments create griffin-prod --config prod-network.
 [what is bastion host](https://cloud.google.com/solutions/connecting-securely#bastion)
 ```
 gcloud compute instances create griffin-dev-db \
---region=us-east1 \
+--zone=us-east1-b \
 --tags=bastion \
---network-interface=griffin-dev-mgmt,griffin-dev-mgmt
+--network-interface subnet=griffin-dev-mgmt \
+--network-interface subnet=griffin-prod-mgmt
 ```
 * Create firewall rules
 ```
@@ -122,6 +123,20 @@ gcloud container clusters create griffin-dev \
    --subnetwork=griffin-dev-wp
 ```
 <h3 id=6>Prepare the Kubernetes cluster</h3>
+
+* Copy the files from `gs://cloud-training/gsp321/wp-k8s`
+```
+gsutil cp -r gs://cloud-training/gsp321/wp-k8s ~/
+```
+
+* Edit the `wp-k8s/wp-env.yaml` file
+```
+cd ~/wp-k8s
+edit wp-env.yaml
+```
+
+* Replace username_goes_here -> `wp_user` and password_goes_here ->  `stormwind_rules`, and save the change.
+
 <h3 id=7>Create a WordPress deployment</h3>
 <h3 id=8>Enable monitoring</h3>
 <h3 id=9>Provide access for an additional engineer</h3>
