@@ -166,12 +166,16 @@ edit wp-deployment.yaml
 
 * Replace YOUR_SQL_INSTANCE with **griffin-dev-db's Instance connection name**, and save the change.
  
-![configuration file]( )
+![configuration file](./image/1_step7_1.JPG)
 * Create deployment and the service with `wp-service.yaml`
 ```
 kubectl create -f wp-deployment.yaml
 kubectl create -f wp-service.yaml
 ```
+* Complete the installation of WordPress
+
+![WordPress Login in page](./image/1_step7_2.JPG)
+![Test Page](./image/1_step7_3.JPG)
 
 <h3 id=8>Enable monitoring</h3>
 
@@ -179,12 +183,12 @@ kubectl create -f wp-service.yaml
 
 `Monitoring`->`Uptime checks`->`＋CREATE UPTIME CHECK`
 
-![Uptime Check]( )
+![Uptime Check](./image/1_step8_1.JPG)
 
-<h3 id=9><a href="https://cloud.google.com/iam/docs/granting-changing-revoking-access">Provide access for an additional engineer</a></h3>
+<h3 id=9>Provide access for an additional engineer</h3>
 
-```
-gcloud project add-iam-policy-binding projectID??? \
-    --member=user:my-user@example.com --role=roles/editor
-```
+![Grant Access](./image/1_step9.jpg)
 
+In oreder to complete this lab, I tried several times.
+It's still a bit difficult for a beginner.
+以上です。
