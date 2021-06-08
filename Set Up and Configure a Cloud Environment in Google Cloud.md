@@ -190,5 +190,7 @@ kubectl create -f wp-service.yaml
 ![Grant Access](./image/1_step9.jpg)
 
 In oreder to complete this lab, I tried several times.
+
 It's still a bit difficult for a beginner.
+
 以上です。
