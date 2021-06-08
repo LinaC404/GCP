@@ -1,4 +1,4 @@
-<h1　align='center'>Create and Manage Cloud Resources: Challenge Lab</h1>
+<h1 align='center'>　Create and Manage Cloud Resources: Challenge Lab　</h1>
 <h2>Task1. Create a project jumphost instance</h2>
 
 ```
