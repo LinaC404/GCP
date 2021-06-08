@@ -1,4 +1,4 @@
-<h1>Create and Manage Cloud Resources: Challenge Lab</h1>
+<h1　align='center'>Create and Manage Cloud Resources: Challenge Lab</h1>
 <h2>Task1. Create a project jumphost instance</h2>
 
 ```
@@ -126,7 +126,9 @@ gcloud compute forwarding-rules create http-fwd-rule \
 ```
 
 The error message suggested that I should set global not region in some command lines.
+
 Attention should be paid to the setting of `zone`, `region` and `global`.
+
 Be patient when you meet the error "Please verify the web servers are serving on frontend of HTTP(s) Load Balancer". (a few minutes)
 
 以上です。
