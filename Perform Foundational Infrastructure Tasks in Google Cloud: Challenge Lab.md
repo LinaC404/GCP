@@ -15,16 +15,6 @@ gsutil mb -p $PROJECT_ID -l us-east1 -b on gs://photobucket-404
 ```
 gcloud pubsub topics create upload_topic
 ```
-```
-gcloud pubsub subscriptions create my_sub --topic=upload_topic
-```
-*ignore*
-```
-gcloud pubsub topics publish upload_topic --message="hello world!"
-```
-```
-gcloud pubsub subscriptions pull my_sub --auto-ack
-```
 
 * <h2>Task 3: Create the thumbnail Cloud Function</h2>
 
@@ -103,13 +93,33 @@ exports.thumbnail = (event, context) => {
   }
 };
 ```
+```
+{
+  "name": "thumbnails",
+  "version": "1.0.0",
+  "description": "Create Thumbnail of uploaded image",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "1.5.1",
+    "@google-cloud/pubsub": "^0.18.0",
+    "fast-crc32c": "1.0.4",
+    "imagemagick-stream": "4.1.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}
+```
 * `CTRL+x` and `Y`
 * Deploy the function to the pub/sub topic
 
 ```
 gcloud functions deploy thumbnail \
-  --stage-bucket photobucket-404 \
-  --trigger-topic uploadphotos \
+  --trigger-resource photobucket-404 \
+  --trigger-event google.storage.object.finalize
   --runtime nodejs14
 ```
 
