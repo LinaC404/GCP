@@ -18,12 +18,7 @@ gcloud pubsub topics create upload_topic
 
 * <h2>Task 3: Create the thumbnail Cloud Function</h2>
 
-```
-mkdir thumbnail_fun && cd thumbnail_fun
-```
-```
-nano index.js
-```
+* Create a function and specify dependencies (`index.js` and `package.json`)
 
 ```javascript
 /* globals exports, require */
@@ -93,7 +88,7 @@ exports.thumbnail = (event, context) => {
   }
 };
 ```
-```
+```json
 {
   "name": "thumbnails",
   "version": "1.0.0",
@@ -113,19 +108,17 @@ exports.thumbnail = (event, context) => {
   }
 }
 ```
-* `CTRL+x` and `Y`
+
 * Deploy the function to the pub/sub topic
 
 ```
 gcloud functions deploy thumbnail \
   --trigger-resource photobucket-404 \
-  --trigger-event google.storage.object.finalize
-  --runtime nodejs14
+  --trigger-event google.storage.object.finalize \
+  --region us-east1 \
+  --runtime nodejs10
 ```
 
-* Verify the status of the function
-```
-gcloud functions describe thumbnail
-```
+* Download the image from [URL](https://storage.googleapis.com/cloud-training/gsp315/map.jpg) and upload it to the bucket
 
 * <h2>Task 4: Remove the previous cloud engineer</h2>
