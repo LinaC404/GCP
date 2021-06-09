@@ -122,3 +122,11 @@ gcloud functions deploy thumbnail \
 * Download the image from [URL](https://storage.googleapis.com/cloud-training/gsp315/map.jpg) and upload it to the bucket
 
 * <h2>Task 4: Remove the previous cloud engineer</h2>
+
+```
+gcloud projects remove-iam-policy-binding $PROJECT_ID \
+ --member=user:my-user@example.com \
+ --role=roles/viewer
+```
+
+以上です。
