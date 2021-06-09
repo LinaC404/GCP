@@ -191,8 +191,6 @@ kubectl create -f wp-service.yaml
 
 In oreder to complete this lab, I tried several times.
 
-It's still a bit difficult for a beginner.
-
-我假装学的津津有味(｡・`ω´・)
+It's still a bit difficult for a beginner.(｡・`ω´・)
 
 以上です。
