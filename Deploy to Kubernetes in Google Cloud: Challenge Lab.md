@@ -50,6 +50,16 @@ cd ..
 ```
 
 <h3 id=2>Test the created Docker image</h3>
+
+Map the host’s port 8080 to port 8080 on the container
+> --publish , -p		Publish a container's port(s) to the host
+> 
+> --detach , -d		  Run container in background and print container ID
+
+```
+docker run -p 8080:8080 -d valkyrie-app:v0.0.1
+```
+![Here is result shown in Step 2](./image/0616_step2.JPG)
 <h3 id=3>Push the Docker image in the Container Repository</h3>
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
