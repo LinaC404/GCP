@@ -60,7 +60,24 @@ Map the host’s port 8080 to port 8080 on the container
 docker run -p 8080:8080 -d valkyrie-app:v0.0.1
 ```
 ![Here is result shown in Step 2](./image/0616_step2.JPG)
+Don't forget to run the `step2.sh` to check your work. 
+```
+./step2.sh
+```
+
 <h3 id=3>Push the Docker image in the Container Repository</h3>
+
+Push images to private registry hosted by gcr, it is necessary to [tag the images with a registry name](https://cloud.google.com/container-registry/docs/pushing-and-pulling#tag).
+
+```
+docker tag valkyrie-app:v0.0.1 gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
+```
+
+Push this Docker image into Container Repository.
+```
+docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
+```
+
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
 <h3 id=6>Create a pipeline in Jenkins to deploy your app</h3>
