@@ -79,5 +79,7 @@ docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 ```
 
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
+
+
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
 <h3 id=6>Create a pipeline in Jenkins to deploy your app</h3>
