@@ -86,14 +86,14 @@ docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
 ```
 
-* Create a cluster named *valkyrie-dev* and set zone for it.
-```
-gcloud container clusters create valkyrie-dev --zone us-east1-b
-```
-
 * Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
 ```
 gcloud container clusters get-credentials valkyrie-dev --zone us-east1-b
+```
+
+* Create a cluster named *valkyrie-dev* and set zone for it.
+```
+gcloud container clusters create valkyrie-dev --zone us-east1-b
 ```
 
 * Deploy `deployment.yaml` and `service.yaml`.
