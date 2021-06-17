@@ -118,7 +118,7 @@ docker build -t gcr.io/$PROJECT_ID/valkyrie-app:v0.0.2 .
 docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.2
 ```
 
-* [Rolling update](././GCP_Notes/blob/main/blue-green%20deployment%2C%20rolling%20update%20and%20canary%20deployment.md), replace the version `v0.0.1` by `v0.0.2`
+* [Rolling update](././GCP_Notes/blue-green%20deployment%2C%20rolling%20update%20and%20canary%20deployment.md), replace the version `v0.0.1` by `v0.0.2`
 ```
 kubectl edit deployment valkyrie-dev
 ```
