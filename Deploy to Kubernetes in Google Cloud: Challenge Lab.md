@@ -81,31 +81,26 @@ docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
 
-* Set a compute zone and create a cluster named *valkyrie-dev*
-```
-gcloud config set compute/zone us-east1-b
-```
-```
-gcloud container clusters create valkyrie-dev
-```
-
-* Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
-```
-gcloud container clusters get-credentials valkyrie-dev
-```
-
 * Modify the `deployment.yaml`
 ```
 sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
 ```
 
+* Create a cluster named *valkyrie-dev* and set zone for it.
+```
+gcloud container clusters create valkyrie-dev --zone us-east1-b
+```
+
+* Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
+```
+gcloud container clusters get-credentials valkyrie-dev --zone us-east1-b
+```
+
 * Deploy `deployment.yaml` and `service.yaml`.
-
 ```
-kubectl create -f ./valkyrie-app/k8s/deployment.yaml
-kubectl create -f ./valkyrie-app/k8s/service.yaml
+kubectl create -f k8s/deployment.yaml
+kubectl create -f k8s/service.yaml
 ```
-
 
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
 <h3 id=6>Create a pipeline in Jenkins to deploy your app</h3>
