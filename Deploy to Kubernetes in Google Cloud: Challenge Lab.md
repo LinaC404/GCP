@@ -143,3 +143,6 @@ export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/com
 kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
 ```
 
+* Setup your credentials to use `Google Service Account from metadata`.
+* Create a pipeline job that points to your \*/master branch. You can get the git project repository URL by running ``.
+![Create a pipeline job](./image/0617_step6_1.JPG)
