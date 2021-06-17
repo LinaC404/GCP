@@ -144,5 +144,26 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
 ```
 
 * Setup your credentials to use `Google Service Account from metadata`.
-* Create a pipeline job that points to your \*/master branch. You can get the git project repository URL by running ``.
+
+* Create a pipeline job that points to your \*/master branch. 
+  
+  You can get the git project repository URL by running `gcloud source repos list`. The result is as follows:
+> https://source.developers.google.com/p/[PROJECT_ID]/r/valkyrie-app
+
 ![Create a pipeline job](./image/0617_step6_1.JPG)
+
+
+* Edit Jenkinsfile, replace `YOUR_PROJECT` with YOUR ACTUAL PROJECT ID
+* Edit html.go and change green to organge
+* Use `git` to add and commit these changes to the master branch. Push to the  repository.
+```
+git config --global user.email "student-02-42363f1062b0@qwiklabs.net"
+git config --global user.name "linechen"
+git add .
+git commit -m "new version-color changes"
+git push origin master
+```
+![here in the result1-Jenkins](./image/0617_step6_2.JPG)
+![here is the result-color changes](./image/0617_step6_3.JPG)
+
+以上です。
