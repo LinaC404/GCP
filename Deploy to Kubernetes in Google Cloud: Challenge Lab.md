@@ -53,11 +53,9 @@ cd ..
 
 * Map the host’s port 8080 to port 8080 on the container
 > --publish , -p		Publish a container's port(s) to the host
-> 
-> --detach , -d		  Run container in background and print container ID
 
 ```
-docker run -p 8080:8080 -d valkyrie-app:v0.0.1
+docker run -p 8080:8080 valkyrie-app:v0.0.1 &
 ```
 ![Here is result shown in Step 2](./image/0616_step2.JPG)
 * Don't forget to run the `step2.sh` to check your work. 
@@ -70,7 +68,7 @@ docker run -p 8080:8080 -d valkyrie-app:v0.0.1
 * Push images to private registry hosted by gcr, it is necessary to [tag the images with a registry name](https://cloud.google.com/container-registry/docs/pushing-and-pulling#tag).
 
 ```
-cd valkyrie-app/
+cd valkyrie-app
 docker tag valkyrie-app:v0.0.1 gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 ```
 
@@ -87,8 +85,9 @@ sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
 ```
 
 * Don't forget to check the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
+* I forgot it...
 ```
-gcloud container clusters get-credentials valkyrie-dev --region us-east
+gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
 ```
 
 * Deploy `deployment.yaml` and `service.yaml`.
@@ -99,7 +98,7 @@ kubectl create -f k8s/service.yaml
 
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
 
-* `valkyrie-app` directory, Merge `kurt-dev` into master
+* Merge `kurt-dev` into master
 ```
 git merge origin/kurt-dev
 ```
