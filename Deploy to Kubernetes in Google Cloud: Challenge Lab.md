@@ -158,7 +158,7 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
 * Use `git` to add and commit these changes to the master branch. Push to the  repository.
 ```
 git config --global user.email "student-02-42363f1062b0@qwiklabs.net"
-git config --global user.name "linechen"
+git config --global user.name "LinaChen"
 git add .
 git commit -m "new version-color changes"
 git push origin master
