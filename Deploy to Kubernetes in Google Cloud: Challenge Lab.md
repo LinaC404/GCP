@@ -81,19 +81,14 @@ docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
 
-* Modify the `deployment.yaml`
+* Modify the `deployment.yaml`, replace `IMAGE_HERE` with the following command
 ```
 sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
 ```
 
-* Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
+* Don't forget to check the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
 ```
-gcloud container clusters get-credentials valkyrie-dev --zone us-east1-b
-```
-
-* Create a cluster named *valkyrie-dev* and set zone for it.
-```
-gcloud container clusters create valkyrie-dev --zone us-east1-b
+gcloud container clusters get-credentials valkyrie-dev --region us-east
 ```
 
 * Deploy `deployment.yaml` and `service.yaml`.
@@ -103,4 +98,25 @@ kubectl create -f k8s/service.yaml
 ```
 
 <h3 id=5>Update the deployment with a new version of valkyrie-app</h3>
+
+* `valkyrie-app` directory, Merge `kurt-dev` into master
+```
+git merge origin/kurt-dev
+```
+
+* Modify the `development.yaml`, replace replicas 1 with 3.
+```
+kubectl edit deployment valkyrie-dev
+```
+
+* Build a new version and push the updated image to the Container Repository
+```
+docker build -t gcr.io/$PROJECT_ID/valkyrie-app:v0.0.2 .
+docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.2
+```
+
+* Rolling update, replace the version `v0.0.1` by `v0.0.2`
+```
+kubectl edit deployment valkyrie-dev
+```
 <h3 id=6>Create a pipeline in Jenkins to deploy your app</h3>
