@@ -38,7 +38,7 @@ ENTRYPOINT ["app","-single=true","-port=8080"]
 EOF
 ```
 
-* To tag the image `valkyrie-app` with `v0.0.1`.
+* To build and tag the image `valkyrie-app` with `v0.0.1`.
 ```
 docker build -t valkyrie-app:v0.0.1 .
 ```
@@ -53,11 +53,14 @@ cd ..
 
 * Map the host’s port 8080 to port 8080 on the container
 > --publish , -p		Publish a container's port(s) to the host
+>
+>  Add & to the end of the command to cause the container to run in the background.
 
 ```
 docker run -p 8080:8080 valkyrie-app:v0.0.1 &
 ```
 ![Here is result shown in Step 2](./image/0616_step2.JPG)
+
 * Don't forget to run the `step2.sh` to check your work. 
 ```
 ./step2.sh
@@ -85,7 +88,8 @@ sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
 ```
 
 * Don't forget to check the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
-* I forgot it...
+
+  I forgot it... and the zone is `us-east1-d` here.
 ```
 gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
 ```
@@ -119,3 +123,23 @@ docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.2
 kubectl edit deployment valkyrie-dev
 ```
 <h3 id=6>Create a pipeline in Jenkins to deploy your app</h3>
+
+<strong>If you are not familiar with the contents here, please read *[Continuous Delivery with Jenkins in Kubernetes Engine](https://google.qwiklabs.com/focuses/1104?parent=catalog)* again!</strong>
+
+* Kill the running container
+```
+docker ps
+docker kill [CONTAINER ID]
+```
+
+* Get the password
+```
+printf $(kubectl get secret cd-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+```
+
+* Connect to the Jenkins console
+```
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/component=jenkins-master"-l "app.kubernetes.io/instance=cd" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
+```
+
