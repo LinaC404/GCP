@@ -19,14 +19,14 @@ Each Google Project has zero or more git repositories that were associated with 
 Clones a git repository from current Google Cloud project into the specified directory.
 > gcloud source repos clone REPOSITORY_NAME [DIRECTORY_NAME]
 
-Clone the valkyrie-app source code repository
+* Clone the valkyrie-app source code repository
 ```
 source <(gsutil cat gs://cloud-training/gsp318/marking/setup_marking.sh)
 export PROJECT_ID=$(gcloud info --format='value(config.project)')
 gcloud source repos clone valkyrie-app --project=$PROJECT_ID
 ```
 
-Create a `Dockerfile`
+* Create a `Dockerfile`
 ```
 cd valkyrie-app/
 cat > Dockerfile <<EOF
@@ -38,12 +38,12 @@ ENTRYPOINT ["app","-single=true","-port=8080"]
 EOF
 ```
 
-To tag the image `valkyrie-app` with `v0.0.1`.
+* To tag the image `valkyrie-app` with `v0.0.1`.
 ```
 docker build -t valkyrie-app:v0.0.1 .
 ```
 
-Don't forget to run the `step1.sh` to check your work. 
+* Don't forget to run the `step1.sh` to check your work. 
 ```
 cd ..
 ./step1.sh
@@ -51,7 +51,7 @@ cd ..
 
 <h3 id=2>Test the created Docker image</h3>
 
-Map the host’s port 8080 to port 8080 on the container
+* Map the host’s port 8080 to port 8080 on the container
 > --publish , -p		Publish a container's port(s) to the host
 > 
 > --detach , -d		  Run container in background and print container ID
@@ -60,27 +60,28 @@ Map the host’s port 8080 to port 8080 on the container
 docker run -p 8080:8080 -d valkyrie-app:v0.0.1
 ```
 ![Here is result shown in Step 2](./image/0616_step2.JPG)
-Don't forget to run the `step2.sh` to check your work. 
+* Don't forget to run the `step2.sh` to check your work. 
 ```
 ./step2.sh
 ```
 
 <h3 id=3>Push the Docker image in the Container Repository</h3>
 
-Push images to private registry hosted by gcr, it is necessary to [tag the images with a registry name](https://cloud.google.com/container-registry/docs/pushing-and-pulling#tag).
+* Push images to private registry hosted by gcr, it is necessary to [tag the images with a registry name](https://cloud.google.com/container-registry/docs/pushing-and-pulling#tag).
 
 ```
+cd valkyrie-app/
 docker tag valkyrie-app:v0.0.1 gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 ```
 
-Push this Docker image into Container Repository.
+* Push this Docker image into Container Repository.
 ```
 docker push gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1
 ```
 
 <h3 id=4>Create and expose a deployment in Kubernetes</h3>
 
-Set a compute zone and create a cluster named *valkyrie-dev*
+* Set a compute zone and create a cluster named *valkyrie-dev*
 ```
 gcloud config set compute/zone us-east1-b
 ```
@@ -88,15 +89,17 @@ gcloud config set compute/zone us-east1-b
 gcloud container clusters create valkyrie-dev
 ```
 
-Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
+* Don't forget to get the Kubernetes credentials before deploying the image onto the Kubernetes cluster.
 ```
 gcloud container clusters get-credentials valkyrie-dev
 ```
 
-Modify the `deployment.yaml`
-![deployment.yaml](./image/0616_step4.JPG)
+* Modify the `deployment.yaml`
+```
+sed -i s#IMAGE_HERE#gcr.io/$PROJECT_ID/valkyrie-app:v0.0.1#g k8s/deployment.yaml
+```
 
-Deploy `deployment.yaml` and `service.yaml`.
+* Deploy `deployment.yaml` and `service.yaml`.
 
 ```
 kubectl create -f ./valkyrie-app/k8s/deployment.yaml
