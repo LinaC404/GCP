@@ -153,8 +153,8 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null &
 ![Create a pipeline job](./image/0617_step6_1.JPG)
 
 
-* Edit Jenkinsfile, replace `YOUR_PROJECT` with YOUR ACTUAL PROJECT ID
-* Edit html.go and change green to organge
+* Edit Jenkinsfile(/home/student_id/marking/valkyrie-app/Dockerfile), replace `YOUR_PROJECT` with YOUR ACTUAL PROJECT ID
+* Edit html.go(/home/student_id/marking/valkyrie-app/source/html.go) and change green to organge
 * Use `git` to add and commit these changes to the master branch. Push to the  repository.
 ```
 git config --global user.email "student-02-42363f1062b0@qwiklabs.net"
