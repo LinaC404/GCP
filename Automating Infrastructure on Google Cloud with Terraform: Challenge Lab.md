@@ -67,6 +67,12 @@ terraform init
 ```
 
 <h3 id=4>Modify and update infrastructure</h3>
+* Modift the  machine_type (n1-standard-1->n1-standard-2) and add a third instance resource named `tf-instance-3`.
+* Apply changes
+```
+terraform plan
+terraform apply
+```
 <h3 id=5>Taint and destroy resources</h3>
 <h3 id=6>Use a module from the Registry</h3>
 <h3 id=7>Configure a firewall</h3>
