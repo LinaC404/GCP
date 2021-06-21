@@ -23,7 +23,8 @@ cd ..
 mkdir storage && cd storage
 touch storage.tf outputs.tf variables.tf
 ```
-* Fill out the [`variables.tf`]((../../Automating%20Infrastructure%20(Terraform)/variables.tf) and [`main.tf`]((../../Automating%20Infrastructure%20(Terraform)/main.tf) 
+
+* Fill out the [`variables.tf`](../../Automating%20Infrastructure%20(Terraform)/variables.tf) and [`main.tf`](../../Automating%20Infrastructure%20(Terraform)/main.tf) 
 * Initialize Terraform
 ```
 terraform init
