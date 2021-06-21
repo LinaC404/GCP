@@ -39,11 +39,11 @@ terraform init
 * Ues command `terraform import` ([the details about this command](https://www.terraform.io/docs/extend/resources/import.html)) to import configurations into the `instances` module
 ```
 export Instance1_ID=$(gcloud compute instances describe tf-instance-1 --zone=us-central1-a --format="value(id)")
-terraform import  modules.instances.google_compute_instance.tf-instance-1 $Instance1_ID
+terraform import  module.instances.google_compute_instance.tf-instance-1 $Instance1_ID
 ```
 ```
 export Instance2_ID=$(gcloud compute instances describe tf-instance-2 --zone=us-central1-a --format="value(id)")
-terraform import  modules.instances.google_compute_instance.tf-instance-2 $Instance2_ID
+terraform import  module.instances.google_compute_instance.tf-instance-2 $Instance2_ID
 ```
 
 * Apply changes
