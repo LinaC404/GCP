@@ -36,7 +36,19 @@ terraform init
   > gcloud compute instances describe INSTANCE_NAME [--zone=ZONE] 
 
 * Write the resource configuration([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf)) to match the existed instances.
+* Ues command `terraform import` ([the details about this command](https://www.terraform.io/docs/extend/resources/import.html)) to import configurations into the `instances` module
+```
+terraform import  module.instances.google_compute_instance.tf-instance-1 <Instance1 ID>
+```
+```
+terraform import  module.instances.google_compute_instance.tf-instance-1 <Instance2 ID>
+```
 
+* Apply changes
+```
+terraform plan
+terraform apply
+```
 <h3 id=3>Configure a remote backend</h3>
 <h3 id=4>Modify and update infrastructure</h3>
 <h3 id=5>Taint and destroy resources</h3>
