@@ -54,7 +54,12 @@ terraform apply
 <h3 id=3>Configure a remote backend</h3>
 
 * Create a bucket inside the `storage` moudle. ([`storage.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/storage/storage.tf))
-<h3 id=4>Modify and update infrastructure</h3>
+* Add the moudle reference to the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
+* Apply changes
+```
+terraform plan
+terraform apply
+```
 <h3 id=5>Taint and destroy resources</h3>
 <h3 id=6>Use a module from the Registry</h3>
 <h3 id=7>Configure a firewall</h3>
