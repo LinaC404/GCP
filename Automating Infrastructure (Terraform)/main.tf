@@ -5,7 +5,14 @@ terraform {
       version = "3.55.0"
     }
   }
+  
+  backend "gcs" {
+    bucket  = var.project_id
+    prefix  = "terraform/state"
+  }
 }
+
+
 provider "google" {
   project = var.project_id
   region = var.region
