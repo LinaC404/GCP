@@ -11,10 +11,28 @@
 1. [Configure a firewall](#7)
 1. [(Optitional) Connectivity test](#8)
 
-Here are the [configuration files](../../tree/main/Automating%20Infrastructure%20(Terraform)).
-
 <h3 id=1>Create the configuration files</h3>
+
+* Create the directory and configuration files as required.
+```
+touch main.tf variables.tf
+mkdir modules && cd modules
+mkdir instances && cd instances
+touch instances.tf outputs.tf variables.tf
+cd ..
+mkdir storage && cd storage
+touch storage.tf outputs.tf variables.tf
+```
+* Fill out the [`variables.tf`]((../../tree/main/Automating%20Infrastructure%20(Terraform))/variables.tf) and [`main.tf`]((../../tree/main/Automating%20Infrastructure%20(Terraform))/main.tf) 
+* Initialize Terraform
+```
+terraform init
+```
+
 <h3 id=2>Import infrastructure</h3>
+
+* Import 
+
 <h3 id=3>Configure a remote backend</h3>
 <h3 id=4>Modify and update infrastructure</h3>
 <h3 id=5>Taint and destroy resources</h3>
