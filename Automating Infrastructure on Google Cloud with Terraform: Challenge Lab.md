@@ -24,7 +24,7 @@ mkdir storage && cd storage
 touch storage.tf outputs.tf variables.tf
 ```
 
-* Fill out the [`variables.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/variables.tf) and [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf) 
+* Fill out the [`variables.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/variables.tf) and [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf) ([More details...](https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build))
 * Initialize Terraform
 ```
 terraform init
