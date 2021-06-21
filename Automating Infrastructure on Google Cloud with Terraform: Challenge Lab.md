@@ -11,6 +11,8 @@
 1. [Configure a firewall](#7)
 1. [(Optitional) Connectivity test](#8)
 
+[Here is the configuration file](./Automating Infrastructure)
+
 <h3 id=1>Create the configuration files</h3>
 <h3 id=2>Import infrastructure</h3>
 <h3 id=3>Configure a remote backend</h3>
