@@ -32,7 +32,11 @@ terraform init
 
 <h3 id=2>Import infrastructure</h3>
 
-* Import 
+* Write the resource configuration([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf)) to match the existed instances.
+  Get detailed information of the instances.
+```
+gcloud 
+```
 
 <h3 id=3>Configure a remote backend</h3>
 <h3 id=4>Modify and update infrastructure</h3>
