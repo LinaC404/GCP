@@ -56,7 +56,7 @@ terraform apply
 
 * Create a bucket inside the `storage` moudle. ([`storage.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/storage/storage.tf)). I also configured the [variables.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/storage/variables.tf) file.
 * Add the moudle reference to the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
-* Apply changes
+* Initialize the module and apply the changes.
 ```
 terraform init
 terraform apply
@@ -70,14 +70,14 @@ terraform init
 <h3 id=4>Modify and update infrastructure</h3>
 
 * Modify the  machine_type (*n1-standard-1*->*n1-standard-2*) and add a third instance resource named `tf-instance-3`.
-* Apply changes
+* Initialize the module and apply the changes.
 ```
-terraform plan
+terraform init
 terraform apply
 ```
 <h3 id=5>Taint and destroy resources</h3>
 
-* Taint the `tf-instance-3` and apply the change.
+* Taint the `tf-instance-3` and apply the changes.
 ```
 terraform taint module.instances.google_compute_instance.tf-instance-3
 terraform plan
@@ -91,13 +91,18 @@ terraform apply
 <h3 id=6>Use a module from the Registry</h3>
 
 * Add [Network Module](https://registry.terraform.io/modules/terraform-google-modules/network/google/3.2.2) to the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf) file. 
-* Apply changes
+* Initialize the module and apply the changes.
 ```
-terraform plan
+terraform init
+terraform apply
+```
+* Navigate to the instances module and connect `tf-instance-1` to `subnet-01`, `tf-instance-2` to `subnet-02`. ([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf))
+* Initialize the module and apply the changes.
+```
+terraform init
 terraform apply
 ```
 
-* Navigate to the instances module and connect `tf-instance-1` to `subnet-01`, `tf-instance-2` to `subnet-02`. ([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf))
   
 <h3 id=7>Configure a <a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall">firewall</a></h3>
 
@@ -109,7 +114,11 @@ terraform apply
   > `projects/{{project}}/global/networks/{{name}}`
   > 
   > self_link - The URI of the created resource.
-
+* Initialize the module and apply the changes.
+```
+terraform init
+terraform apply
+```
 
 
 <h3 id=8>(Optitional) Connectivity test</h3>
