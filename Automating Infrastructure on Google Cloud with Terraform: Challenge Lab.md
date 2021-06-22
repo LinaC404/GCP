@@ -122,3 +122,13 @@ terraform apply
 
 
 <h3 id=8>(Optitional) Connectivity test</h3>
+
+```
+gcloud beta network-management connectivity-tests create terraform-network-check \
+--destination-instance=projects/<FILL IN YOUR PROJECT ID HERE>/zones/us-central1-a/instances/tf-instance-2 \
+--source-instance=projects/<FILL IN YOUR PROJECT ID HERE>/zones/us-central1-a/instances/tf-instance-1 \
+--project=<FILL IN YOUR PROJECT ID HERE> \
+--destination-port=80 \
+--protocol=TCP 
+```
+![The result of Connectivity Tests](./image/0622_step8.jpg)
