@@ -1,5 +1,6 @@
 resource "google_compute_instance" "tf-instance-1" {
   name         = "tf-instance-1"
+  # The machine type was modified in Step5(Modify and update infrastructure)
   machine_type = "n1-standard-2"
   zone         = var.zone
   allow_stopping_for_update = true
@@ -15,9 +16,9 @@ resource "google_compute_instance" "tf-instance-1" {
   }
 }
 
-
 resource "google_compute_instance" "tf-instance-2" {
   name         = "tf-instance-2"
+  # The machine type was modified in Step5(Modify and update infrastructure)
   machine_type = "n1-standard-2"
   zone         = var.zone
   allow_stopping_for_update = true
@@ -33,7 +34,7 @@ resource "google_compute_instance" "tf-instance-2" {
   }
 }
 
-
+# This resource was added in Step5(Modify and update infrastructure) deleted in Step6(Taint and destroy resources).  
 resource "google_compute_instance" "tf-instance-3" {
   name         = "tf-instance-3"
   machine_type = "n1-standard-2"
