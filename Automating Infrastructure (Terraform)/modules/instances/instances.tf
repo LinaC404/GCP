@@ -38,7 +38,7 @@ resource "google_compute_instance" "tf-instance-2" {
   }
 }
 
-# This resource was added in Step5(Modify and update infrastructure) deleted in Step6(Taint and destroy resources).  
+# This resource was added in Step4(Modify and update infrastructure) deleted in Step5(Taint and destroy resources).  
 resource "google_compute_instance" "tf-instance-3" {
   name         = "tf-instance-3"
   machine_type = "n1-standard-2"
