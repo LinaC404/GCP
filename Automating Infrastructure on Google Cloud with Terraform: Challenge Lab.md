@@ -68,13 +68,38 @@ terraform init
 
 <h3 id=4>Modify and update infrastructure</h3>
 
-* Modift the  machine_type (*n1-standard-1*->*n1-standard-2*) and add a third instance resource named `tf-instance-3`.
+* Modify the  machine_type (*n1-standard-1*->*n1-standard-2*) and add a third instance resource named `tf-instance-3`.
 * Apply changes
 ```
 terraform plan
 terraform apply
 ```
 <h3 id=5>Taint and destroy resources</h3>
+
+* Taint the `tf-instance-3` and apply the change.
+```
+terraform taint module.instances.google_compute_instance.tf-instance-3
+terraform plan
+terraform apply
+```
+* <strong>Delete the resource in `main.tf`</strong> to destory the instance `tf-instance-3`
+```
+terraform apply
+```
+
 <h3 id=6>Use a module from the Registry</h3>
-<h3 id=7>Configure a firewall</h3>
+
+* Add [Network Module](https://registry.terraform.io/modules/terraform-google-modules/network/google/3.2.2) to the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf) file. 
+* Apply changes
+```
+terraform plan
+terraform apply
+```
+
+* Navigate to the instances module and connect `tf-instance-1` to `subnet-01`, `tf-instance-2` to `subnet-02`.([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf))
+  
+<h3 id=7>Configure a [firewall]https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall</h3>
+
+* Create a firewall rule named * tf-firewall* in the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
+
 <h3 id=8>(Optitional) Connectivity test</h3>
