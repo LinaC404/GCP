@@ -55,7 +55,7 @@ terraform apply
 <h3 id=3>Configure a remote backend</h3>
 
 * Create a bucket inside the `storage` moudle. ([`storage.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/storage/storage.tf)). I also configured the [variables.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/storage/variables.tf) file.
-* Add the moudle reference to the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
+* Add the moudle reference and configure this storage bucket as the remote backend inside the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
 * Apply changes
 ```
 terraform plan
