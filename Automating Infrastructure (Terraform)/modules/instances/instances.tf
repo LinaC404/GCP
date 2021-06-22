@@ -32,6 +32,7 @@ resource "google_compute_instance" "tf-instance-2" {
 
   network_interface {
     # Modifed in Step6_2(Use a module from the Registry)
+    network = "terraform-vpc"
     subnetwork = "subnet-01"
   }
 }
