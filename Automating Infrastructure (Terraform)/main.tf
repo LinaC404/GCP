@@ -66,5 +66,5 @@ resource "google_compute_firewall" "tf-firewall" {
     ports    = ["80"]
   }
   
-  ource_ranges = ["0.0.0.0/0"]
+  source_ranges = ["0.0.0.0/0"]
 }
