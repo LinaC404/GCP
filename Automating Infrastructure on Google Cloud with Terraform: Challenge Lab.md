@@ -27,6 +27,7 @@ touch storage.tf outputs.tf variables.tf
 * Fill out the [`variables.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/variables.tf) and [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf) ([More details...](https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build))
 * Initialize Terraform
 ```
+cd ~
 terraform init
 ```
 
@@ -35,7 +36,7 @@ terraform init
   Get detailed information of the instances.
   > gcloud compute instances describe INSTANCE_NAME [--zone=ZONE] 
 
-* Write the resource configuration([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf)) to match the existed instances.
+* Write the resource configuration([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf)) to match the existed instances. I also configured the [`variables.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/variables.tf) file.
 * Ues command `terraform import` ([the details about this command](https://www.terraform.io/docs/extend/resources/import.html)) to import configurations into the `instances` module
 ```
 export Instance1_ID=$(gcloud compute instances describe tf-instance-1 --zone=us-central1-a --format="value(id)")
@@ -43,7 +44,7 @@ terraform import  module.instances.google_compute_instance.tf-instance-1 $Instan
 ```
 ```
 export Instance2_ID=$(gcloud compute instances describe tf-instance-2 --zone=us-central1-a --format="value(id)")
-terraform import  module.instances.google_compute_instance.tf-instance-2 $Instance2_ID
+terraform import module.instances.google_compute_instance.tf-instance-2 $Instance2_ID
 ```
 
 * Apply changes
