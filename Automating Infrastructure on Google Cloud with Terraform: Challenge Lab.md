@@ -101,5 +101,14 @@ terraform apply
 <h3 id=7>Configure a <a href="https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall">firewall</a></h3>
 
 * Create a firewall rule named *tf-firewall* in the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
+  
+  To retrieve the network argument
+  > ID - an identifier for the resource with format
+  > 
+  > `projects/{{project}}/global/networks/{{name}}`
+  > 
+  > self_link - The URI of the created resource.
+
+
 
 <h3 id=8>(Optitional) Connectivity test</h3>
