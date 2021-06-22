@@ -7,7 +7,7 @@ terraform {
   }
   # The prefix was added in Step3_2(Configure a remote backend) 
   backend "gcs" {
-    bucket  = var.project_id
+    bucket  = "<FILL IN YOUR PROJECT ID HERE>" # Variables may not be used here.
     prefix  = "terraform/state"
   }
 }
