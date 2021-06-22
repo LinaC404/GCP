@@ -55,7 +55,7 @@ module "vpc" {
 # The reference was added in Step7( Configure a firewall)  
 resource "google_compute_firewall" "tf-firewall" {
   name    = "tf-firewall"
-  network = "projects/{{FILL IN YOUR PRIJECT ID HERE}}/global/networks/terraform-vpc"
+  network = "projects/<FILL IN YOUR PRIJECT ID HERE>/global/networks/terraform-vpc"
 
   allow {
     protocol = "icmp"
