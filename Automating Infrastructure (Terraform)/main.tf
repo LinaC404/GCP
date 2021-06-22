@@ -51,3 +51,20 @@ module "vpc" {
         },
     ]
 }
+  
+resource "google_compute_firewall" "tf-firewall" {
+  name    = "tf-firewall"
+  # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network#id
+  network = "projects/<PROJECT_ID>/global/networks/terraform-vpc"
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+  
+  ource_ranges = ["0.0.0.0/0"]
+}
