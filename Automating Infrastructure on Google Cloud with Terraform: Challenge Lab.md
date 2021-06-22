@@ -96,10 +96,10 @@ terraform plan
 terraform apply
 ```
 
-* Navigate to the instances module and connect `tf-instance-1` to `subnet-01`, `tf-instance-2` to `subnet-02`.([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf))
+* Navigate to the instances module and connect `tf-instance-1` to `subnet-01`, `tf-instance-2` to `subnet-02`. ([instances.tf](../../blob/main/Automating%20Infrastructure%20(Terraform)/modules/instances/instances.tf))
   
-<h3 id=7>Configure a [firewall]https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall</h3>
+<h3 id=7>Configure a [firewall](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall)</h3>
 
-* Create a firewall rule named * tf-firewall* in the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
+* Create a firewall rule named *tf-firewall* in the [`main.tf`](../../blob/main/Automating%20Infrastructure%20(Terraform)/main.tf).
 
 <h3 id=8>(Optitional) Connectivity test</h3>
