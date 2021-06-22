@@ -82,7 +82,7 @@ terraform taint module.instances.google_compute_instance.tf-instance-3
 terraform plan
 terraform apply
 ```
-* <strong>Delete the resource in `main.tf`</strong> to destory the instance `tf-instance-3`
+* <strong>Delete the resource</strong> in `main.tf` to destory the instance `tf-instance-3`
 ```
 terraform apply
 ```
