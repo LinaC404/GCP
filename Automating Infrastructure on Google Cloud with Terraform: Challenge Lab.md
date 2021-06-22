@@ -134,3 +134,7 @@ gcloud beta network-management connectivity-tests create terraform-network-check
 --protocol=TCP 
 ```
 ![The result of Connectivity Tests](./image/0622_step8.jpg)
+
+Be careful of the requirements like initialization!!!
+
+以上です。
