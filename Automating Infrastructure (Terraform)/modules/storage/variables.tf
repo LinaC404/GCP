@@ -2,7 +2,7 @@
 variable "project_id" {
     description = "The ID of the project in which to provision resources."
     type        = string
-    default     = "qwiklabs-gcp-03-7547abdb50f8"
+    default     = "<FILL IN YOUR PROJECT ID HERE>"
 }
 
 variable "region" {
