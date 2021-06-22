@@ -30,7 +30,8 @@ resource "google_compute_instance" "tf-instance-2" {
   }
 
   network_interface {
-    network = "default"
+    # Modifed in Step6_2(Use a module from the Registry)
+    subnetwork = "subnet-01"
   }
 }
 
@@ -48,7 +49,8 @@ resource "google_compute_instance" "tf-instance-3" {
   }
 
   network_interface {
-    network = "default"
+    # Modifed in Step6_2(Use a module from the Registry)
+    subnetwork = "subnet-02"
   }
 }
 
