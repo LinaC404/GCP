@@ -29,7 +29,7 @@ module "storage" {
 }
 
 
-# The reference was added in Step6_1(Use a module from the Registry)
+# The module was added in Step6_1(Use a module from the Registry)
 module "vpc" {
     source  = "terraform-google-modules/network/google"
     version = "~> 3.2.2"
@@ -52,7 +52,7 @@ module "vpc" {
     ]
 }
 
-# The reference was added in Step7( Configure a firewall)  
+# The resource was added in Step7( Configure a firewall)  
 resource "google_compute_firewall" "tf-firewall" {
   name    = "tf-firewall"
   network = "projects/<FILL IN YOUR PRIJECT ID HERE>/global/networks/terraform-vpc"
